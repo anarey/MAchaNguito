@@ -1,0 +1,10 @@
+Los atributo son datos de un nodo.
+Pueden ser añadidos de forma dinámica
+
+Durante un chef run, el cliente guarda los atributos del nodo en el server, es indezada la información y al ser arrancado de nuevo, recupera estos atributos y los mezcla en función a unas reglas de prioridades.
+
+
+Se almacenan en el servidor y son indexados
+
+
+http://wiki.opscode.com/display/chef/Setting+Attributes+%28Examples%29.
