@@ -1,0 +1,16 @@
+# Qué es knife
+
+* Herramienta de linea de comandos incluida en chef
+* Provee de la capacidad de interactuar con nodes, cookbook, roles, databags, environments, etc
+* Usada por adminsitradores de sistema para interactuar con la api del servidor de chef o con un repositio local de chef
+* También usado para gestiones recursos en la nube y sistemas de arranque.
+
+# Tareas
+* Qué es knife y comando.
+* Esquema del proyecto.
+
+# Proyecto 
+Interfaz gráfica para gestionar knife. ¿web o gtk?
+
+
+
