@@ -5,6 +5,39 @@
 * Usada por adminsitradores de sistema para interactuar con la api del servidor de chef o con un repositio local de chef
 * También usado para gestiones recursos en la nube y sistemas de arranque.
 
+* Contenedor de plugins de knife
+
+## Lista de cookbook
+
+arey@tuxell:~$ knife cookbook list
+  ohai-gecos               1.9.2
+  printers_management      0.1.1
+  software_management      0.2.1
+  usermanagement           0.1.4
+  workstation_management   0.1.1
+
+## Listamos los data bag existentes:
+
+arey@tuxell:~$ knife data bag list
+available_printers
+printers
+sources_list
+users
+
+
+## Mostar el contenido de un data bag:
+arey@tuxell:~$ knife data bag show sources_list
+v1_gecos_guadalinex_org_gecos_v1
+v1_gecos_guadalinex_org_ubuntu_oneiric
+v1_gecos_guadalinex_org_ubuntu_oneiric-updates
+
+## Recetas de un cookbook
+
+knife cookbook show workstation_management 0.1.1
+
+
+
+
 # Tareas
 * Qué es knife y comando.
 * Esquema del proyecto.
@@ -12,5 +45,29 @@
 # Proyecto 
 Interfaz gráfica para gestionar knife. ¿web o gtk?
 
+
+## Cookbook:
+Encapsula todos los recursos necesarios para automatizae la infraestructura.
+
+Contenido de un cookbook:
+- Atributos: 
+
+
+
+# Crear un cookbook y una receta.
+
+* Previa instalacion de chef.
+* Creamos un cookbook a través de knife
+
+knife cookbook create ntp
+
+Esto crea una estructura en:
+/root/chef-repo/cookbooks
+
+El nombre de la recetas es relativo a la estructura del cookbook
+
+recipe[foo::bar] => cookbooks/foo/recipes/bar.rb
+
+Existe una receta especial en todos los cookbook: default.rb Es ejecutada por todas las recetas del cookbook. Un buen lugar para poner cosas comunes en todas las recetas de un cookbook.
 
 

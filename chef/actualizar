@@ -1,0 +1,133 @@
+Actualizar el servidor gecos-server:
+
+en /var/www/kitchet
+
+git pull
+
+
+## root@gecos-server:/var/www/kitchen# git pull
+remote: Counting objects: 18, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 9 (delta 7), reused 9 (delta 7)
+Unpacking objects: 100% (9/9), done.
+From https://github.com/gecos-team/kitchen
+   123052a..a9cacee  master     -> origin/master
+Updating 123052a..a9cacee
+Fast-forward
+ app/helpers/home_users_helper.rb |   10 +++++-----
+ lib/chef/chef_base.rb            |    7 ++++++-
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+## root@gecos-server:/var/www/kitchen# service kitchen restart
+Kitchen stopped
+Kitchen started
+Kitchen restarted
+
+
+Descargamos los cookbook en local:
+
+git clone git@github.com:gecos-team/cookbook-usermanagement.git
+git@github.com:gecos-team/cookbook-printers_management.git
+git@github.com:gecos-team/cookbook-software_management.git
+git@github.com:gecos-team/cookbook-workstation_management.git
+git@github.com:gecos-team/cookbook-desktop.git
+git@github.com:gecos-team/cookbook-conf.git
+
+arey@tuxell:~/proyectos/git/cookbook$ sudo knife cookbook upload -o ./ printers_management
+[sudo] password for arey: 
+Uploading printers_management             [0.1.1]
+upload complete
+arey@tuxell:~/proyectos/git/cookbook$ sudo knife cookbook upload -o ./ software_management
+Uploading software_management             [0.2.1]
+upload complete
+arey@tuxell:~/proyectos/git/cookbook$ sudo knife cookbook upload -o ./ usermanagement
+Uploading usermanagement             [0.1.4]
+upload complete
+arey@tuxell:~/proyectos/git/cookbook$ sudo knife cookbook upload -o ./ workstation_management
+Uploading workstation_management             [0.1.1]
+upload complete
+
+## Preparar kitchen:
+
+## Compilar la app
+cd /var/www/kitchen
+export PATH=$PATH:/var/lib/gems/1.8/bin/
+RAILS_ENV=production bundle exec rake assets:precompile
+
+## Reinicio del server.
+service kitchen restart
+
+
+
+ssh -f -N root@192.168.56.101 -L 10.240.194.218:22222:192.168.56.101:22
+ssh -f -N root@192.168.56.101 -L 10.240.194.218:443:192.168.56.101:443
+ssh -f -N root@192.168.56.101 -L 10.240.194.218:80:192.168.56.101:80
+ssh -f -N root@192.168.56.101 -L 10.240.194.218:3000:192.168.56.101:3000
+
+
+ssh -f -N root@192.168.56.101 -L 10.240.194.5:22222:192.168.56.101:22
+ssh -f -N root@192.168.56.101 -L 10.240.194.5:443:192.168.56.101:443
+ssh -f -N root@192.168.56.101 -L 10.240.194.5:80:192.168.56.101:80
+ssh -f -N root@192.168.56.101 -L 10.240.194.5:3000:192.168.56.101:3000
+sudo ssh -f -N root@192.168.56.101 -L 10.240.194.5:389:192.168.56.101:389
+
+* 80: todas las conexiones realizadas a traves de este puerto serÃ¡n redireccionadas al 443
+* 443: Chef API, Chef WebUI, LAM, extplorer, dokuwiki, autoconfig, servicio de ficheros (ppds, chef-cert etc.), menÃº general de servicios
+* 3000: Kitchen
+* 389: LDAP
+* 22: SSH
+
+
+
+ sudo apt-get install ---reinstall gecos-desktop-conf
+
+
+## Al cambiarle la mac a la maquina virtual, es necesario cambiarlo en el fichero de reglas de udev. /etc/udev/rules.d/70-persistent-net.rules 
+
+
+### LDAP
+ldap://10.240.194.5:389
+ou=usuarios,dc=gecos-server,dc=local
+ou=grupos,dc=gecos-server,dc=local
+cn=admin,dc=gecos-server,dc=local
+
+usuario: alvaro.pinel.ext
+contraseña: aeAt,2006)
+
+ldapsearch -h ldap.juntadeandalucia.es -b "o=sadesi,o=empleados,o=juntadeandalucia,c=es" -x "uid=alfonso.cala"
+
+#Busqueda con clave
+ldapsearch -h ldap.juntadeandalucia.es -b "o=sadesi,o=empleados,o=juntadeandalucia,c=es" -D "uid=alfonso.cala,o=sadesi,o=empleados,o=juntadeandalucia,c=es" -
+x "uid=alfonso.cala" -w clave
+
+
+
+## Configuración de red en un entorno sin internet.
+
+## Cambios a realizar en la maquina virtual.
+*desactivamos las dos interfaces de red que vienen por defecto.
+* Activamos la 3 interfaz como «Adaptador puente» y «perimitir a todos»
+
+Editar el fichero /etc/networking/interfaces
+
+auto eth0
+ifase eth0 inet statis
+    address 10.0.0.1
+    netmask 255.255.255.0
+
+Editamos el fichero: vi /etc/udev/rules.d/70-persistent-net.rules
+Elimanos todas las entradas y dejamos solo aquella cuya mac coincida con la tarjeta activa y le ponemos que es la eth0
+
+Y reiniciamos. //Al jugar con el «hardware virtual» es necesario un reinicio.
+
+
+### Ponerle config de red a mano: 
+ifconfig eth0 address 10.1.1.1 netmask 255.255.255.0
+
+
+
+
+
+
+
+dnssd://Brother%20HL-5170DN%20series%20(BRN_36A2A7_P1_AT)._ipp._tcp.local/
