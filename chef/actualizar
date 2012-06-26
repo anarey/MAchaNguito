@@ -84,24 +84,6 @@ sudo ssh -f -N root@192.168.56.101 -L 10.240.194.5:389:192.168.56.101:389
 
 ## Al cambiarle la mac a la maquina virtual, es necesario cambiarlo en el fichero de reglas de udev. /etc/udev/rules.d/70-persistent-net.rules 
 
-
-### LDAP
-ldap://10.240.194.5:389
-ou=usuarios,dc=gecos-server,dc=local
-ou=grupos,dc=gecos-server,dc=local
-cn=admin,dc=gecos-server,dc=local
-
-usuario: alvaro.pinel.ext
-contraseña: aeAt,2006)
-
-ldapsearch -h ldap.juntadeandalucia.es -b "o=sadesi,o=empleados,o=juntadeandalucia,c=es" -x "uid=alfonso.cala"
-
-#Busqueda con clave
-ldapsearch -h ldap.juntadeandalucia.es -b "o=sadesi,o=empleados,o=juntadeandalucia,c=es" -D "uid=alfonso.cala,o=sadesi,o=empleados,o=juntadeandalucia,c=es" -
-x "uid=alfonso.cala" -w clave
-
-
-
 ## Configuración de red en un entorno sin internet.
 
 ## Cambios a realizar en la maquina virtual.
