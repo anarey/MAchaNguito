@@ -252,6 +252,10 @@ Refactorizar el código, después los test: agrupar funcionalidades, nombres má
 
 `may >` indenta.
 
+* Añadir comentarios a un fichero: 
+- Seleccionamos las lineas a comentar con may + v
+- Ejecutamos el comando de sustitución de líneas: :s/^/#/
+
 # Pruebas Unitarias:
 
 # Proceso para definir los casos:
