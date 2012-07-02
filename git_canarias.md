@@ -1,23 +1,16 @@
-que puedo hacer:
-
-* feature en frogr => Ya implementada
-* Web de análisis de datos en django. 
-
-```python
->>> os.listdir("/home/anarey/Escritorio/videos_CUSL6")
-```
-
-### Poner colores en git
+# Anotaciones sobre Git:
+## Poner colores en git
 
 [Colorines en Git](http://www.arthurkoziel.com/2008/05/02/git-configuration/)
 
     $ git config --global color.diff.meta 'blue black bold'
 
-quedan almacenado en `/home/anarey/.gitconfig`
+Esta configuración queda almacenada en `/home/anarey/.gitconfig`
 
-http://git-scm.com/book/en/Customizing-Git-Git-Configuration
+ * [Configuración de colores](http://git-scm.com/book/en/Customizing-Git-Git-Configuration)
+ * [Fuentes con colores](http://www.arthurkoziel.com/2008/05/02/git-configuration/)
 
-Incluir alias en git:
+Incluir alias en git. Ejemplos de las más usadas:
 ```
 git config --global alias.st status
 git config --global alias.ci commit
@@ -62,64 +55,40 @@ git config --global alias.br branch
  2042  git config --get
 ```
 
-###  Muestra los ultimas acciones realizadas (últimos cambios, commit, etc)
+*  Muestra los ultimas acciones realizadas (últimos cambios, commit, etc)
 
     git reflog 
 
  
-### Información de configuracion que tenemos activa:
+* Información de configuracion que tenemos activa:
 
     vi /home/anarey/.gitconfig 
 
-## Crea una rama y cambia a ella, a partir del momento que le indiquemos.
+* Crea una rama y cambia a ella, a partir del momento que le indiquemos.
 
     2005  git checkout -b recuperar HEAD@{1}
 
  
-### Convertir a parch el ultimo commit. Podemos usar el parche después para aplicarlo.
+* Convertir a parch el ultimo commit. Podemos usar el parche después para aplicarlo.
 
     git format-patch HEAD^
 
-### Muestra toda la información correspondiente al último commit. Con las diferencias.
+* Muestra toda la información correspondiente al último commit. Con las diferencias.
 
     git log -p
 
-## Añade el fichero/s del area de trabajo al anterior commit (se olvido incluir un archivo)
+* Añade el/varios fichero/s del area de trabajo al último commit realizado (se olvido incluir un archivo)
 
     git add fichero
     git commit --amend
 
-## Stash
-
-Es una pila donde podemos almacena cambios (área de trabajo) que necesitamos dejar almacenados porque no se pueda por ahora aplicarlos o porque queremos en otro momento volver a ellos.
-
-    git stash list
-    git stash pop
-
-Aplicar commit sin tener en cuenta los cambios que estamos haciendo. Aplica los cambios que haya entre la rama actual y la indicada.
-
-    git rebase recuperar
-
-
-
-[Aplicación tmux](http://tmux.sourceforge.net/)
--------------
-
-Contribuir en un proyecto (en el caso de que no tengas permisos sobre el proyecto):
-
-* Hacer un fork del proyecto de github a través de la interfaz gráfica. https://help.github.com/articles/using-pull-requests
-* En el caso de que hubieras clonado previamente el proyecto, tienes que cambiar la url del repositorio remoto por el que acabas de crear a través del fork: `git remote set-url origin https://github.com/anarey/GDN.git`
-* Lo más conveniente es crear una rama para la nueva feature, hacer los cambios correspondientes y commit sobre esa rama, de forma que no se toque la rama master. Así, en caso de haber cambios en la rama master, se actualizan esos cambios, sin tener que verse implicados con el desarrollo que se está realizando. Y más tarde se hace un merge entre ramas.
-* Hacer el commit o los commit implicador.
-* Subir los cambios correspondientes al repo (al creado a partir del fork del proyecto principal) 
-
+* Subir sólo los commit al repositio remoto (origin) de la rama indicada.
 ```
 $ git push 
 $ git push origin <branch>  # Subir sólo la rama indicada 
 ```
-
 ## Añadir un repo remoto a nuestro repo local.
-
+    
     git remote add upstream git://github.com/aruiz/GDN.git
 
 ```
@@ -129,6 +98,48 @@ origin	git@github.com:anarey/GDN.git (push)
 upstream	git://github.com/aruiz/GDN.git (fetch)
 upstream	git://github.com/aruiz/GDN.git (push)
 ```
+
+
+## Stash
+
+Es una pila donde podemos almacena cambios (área de trabajo) que necesitamos dejar almacenados porque no se pueda por ahora aplicarlos o porque queremos en otro momento volver a ellos.
+
+    git stash list
+    git stash pop
+
+* Guardar el estado de cambios de una rama
+
+    git stash save "Configuracion de bd"
+    git stash list
+    git stash save "Configuracion de bd"
+
+
+## rebase
+
+Aplicar commit sin tener en cuenta los cambios que estamos haciendo. Aplica los cambios que haya entre la rama actual y la indicada.
+
+    git rebase recuperar
+
+
+* Checkout, cambia a la rama que se le indica, por eso, cuando queremos volver a los cambios anteriores (deshacer los cambios) tb es checkout
+
+```
+git checkout -- .gitignore
+```
+
+
+[Aplicación tmux](http://tmux.sourceforge.net/)
+-------------
+
+## Contribuir en un proyecto (en el caso de que no tengas permisos sobre el proyecto):
+
+* Hacer un fork del proyecto de github a través de la interfaz gráfica. https://help.github.com/articles/using-pull-requests
+* En el caso de que hubieras clonado previamente el proyecto, tienes que cambiar la url del repositorio remoto por el que acabas de crear a través del fork: `git remote set-url origin https://github.com/anarey/GDN.git`
+* Lo más conveniente es crear una rama para la nueva feature, hacer los cambios correspondientes y commit sobre esa rama, de forma que no se toque la rama master. Así, en caso de haber cambios en la rama master, se actualizan esos cambios, sin tener que verse implicados con el desarrollo que se está realizando. Y más tarde se hace un merge entre ramas.
+* Hacer el commit o los commit implicador.
+* Subir los cambios correspondientes al repo (al creado a partir del fork del proyecto principal) 
+
+
 
 El pullrequest se hace sobre todos los commit de la rama que que estás haciéndolo.
 
@@ -141,15 +152,9 @@ Tener siempre la idea de lo que se va a hacer y ponerle el nombre a la rama.
 git checkout -- .gitignore
 ```
 
-### guardar el estado de cambios de una rama
 
-    git stash save "Configuracion de bd"
-    git stash list
-    git stash save "Configuracion de bd"
-
-Remotes
+## Remotes
 ----------
-
 Por defecto, la rama remota del proyecto, apuntará a `origin/master`. A nosotros nos intererará que apunte a `upstream/master`. Es decir, cuando hagamos un pull (descargarnos los cambios), queremos hacerlo sobre el proyecto original, y no sobre el proyecto fork.
 
 ```
@@ -247,9 +252,11 @@ Refactorizar el código, después los test: agrupar funcionalidades, nombres má
 
 `may >` indenta.
 
+# Pruebas Unitarias:
 
+# Proceso para definir los casos:
 
-### Proceso para definir los casos:
+Para definir los test que deben pasar nuestros 
 
 - Caso base / básiso y simple
 - Caso negadoa al base.
