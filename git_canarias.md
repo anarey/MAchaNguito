@@ -16,7 +16,14 @@ git config --global alias.st status
 git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
+git config --global color.diff.whitespace "red reverse"
 ```
+
+ * Para que resaltara los espacios en blanco de más:
+`$ git config --global color.diff.whitespace "red reverse"`
+ Esto es útil al hacer un `git diff` (antes del commit) o con un `git log -p` (ver el histórico de cambios)
+
+ Es bueno evitarlos para tener más limpio el código, además de difíciles de detectar (al ser caracteres en invisibles). Sobre todo con Python.
 
 ```
  2002  git format-patch HEAD^
