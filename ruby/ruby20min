@@ -57,6 +57,22 @@ irb(main):103:0> Hola.instance_methods
 irb(main):106:0> Hola.instance_methods(false)
 => ["decir_adios"]
 
+## Preguntar a un objeto si tiene disponible un metodo.
+irb(main):111:0> ha.respond_to?("decir_adios")
+=> true
+irb(main):112:0> ha.respond_to?("to_s")
+=> true
+
+## Definir metodos accesibles desde fuera. 
+
+irb(main):044:0> class Anfitrion
+irb(main):045:1>   attr_accessor :nombre
+irb(main):046:1> end
+
+* El uso de attr_accessor determinó que se definan dos nuevos métodos por nosotros, nombre para obtener el valor, y nombre= para modificarlo.
+
+* Esto permite modificar el contenido del atributo del objeto con un ha.nombre = "ana"
+
 
 "Hola {#nombre}" La expresión entre llaves es transformada en un string y la inserta en el string.
 - Hola mundo.
