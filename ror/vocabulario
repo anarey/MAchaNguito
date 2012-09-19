@@ -1,0 +1,22 @@
+# Vocabulario ROR:
+
+gemsets: 
+ : Entornos completamente aislados para cada proyecto donde podemos gestionar sus propias gemas a través de RVM
+ 
+ Psych
+ 
+ 
+ 
+ http://suranyami.com/how-to-get-rid-of-multiple-psychbundle-warnin
+ 
+jQuery
+SASS.
+CoffeeScript.
+ActiveRecord usará el patrón Identity Map.
+
+# gem install annotate
+
+
+annotate 2.5.0
+Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
+

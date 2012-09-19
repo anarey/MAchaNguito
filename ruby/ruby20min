@@ -1,0 +1,63 @@
+Todo devuelve lo último evaluado,
+
+Modulos:
+- Agrupar métodos bajo un mismo nombre familiar.
+- puts "Hola mundo"
+
+# funciones:
+def h
+    puts "Hola mundo"
+end
+
+Llamada a la función: f, o f()
+
+
+irb(main):015:0> def h(nombre)
+irb(main):016:1> puts "Hola #{nombre}"
+irb(main):017:1> end
+=> nil
+irb(main):018:0> h("Matz")
+Hola Matz
+
+## clase
+irb(main):024:0> class Anfitrion
+irb(main):025:1>   def initialize(nombre = "Mundo")
+irb(main):026:2>     @nombre = nombre
+irb(main):027:2> irb(main):024:0> class Anfitrion
+irb(main):025:1>   def initialize(nombre = "Mundo")
+irb(main):026:2>     @nombre = nombre
+irb(main):027:2>   end
+irb(main):028:1>   def decir_hola
+irb(main):029:2>     puts "Hola #{@nombre}"
+irb(main):030:2>   end
+irb(main):031:1>   def decir_adios
+irb(main):032:2>     puts "Adiós #{@nombre}, vuelve pronto."
+irb(main):033:2>   end
+irb(main):034:1> end  end
+irb(main):028:1>   def decir_hola
+irb(main):029:2>     puts "Hola #{@nombre}"
+irb(main):030:2>   end
+irb(main):031:1>   def decir_adios
+irb(main):032:2>     puts "Adiós #{@nombre}, vuelve pronto."
+irb(main):033:2>   end
+irb(main):034:1> end
+
+a = Anfitrion.new("Bea")
+a.decir_hola
+a.decir_adios
+a.@nombre =>> incorrecto.
+
+Anfitrion.instance_methods Metodos disponibles de un objeto.
+@nombre => variable de instancia.
+Metodos de la clase y de la superclases
+irb(main):103:0> Hola.instance_methods
+=> ["inspect", "tap", "clone", "public_methods", "__send__", "object_id", "instance_variable_defined?", "equal?", "freeze", "extend", "send", "methods", "hash", "dup", "to_enum", "instance_variables", "eql?", "instance_eval", "id", "g", "singleton_methods", "taint", "enum_for", "frozen?", "instance_variable_get", "instance_of?", "display", "to_a", "method", "type", "instance_exec", "protected_methods", "==", "===", "decir_adios", "instance_variable_set", "kind_of?", "respond_to?", "to_s", "class", "__id__", "tainted?", "=~", "private_methods", "untaint", "nil?", "is_a?", "h"]
+
+## Sólo ver los métodos definidos por nosotros.
+irb(main):106:0> Hola.instance_methods(false)
+=> ["decir_adios"]
+
+
+"Hola {#nombre}" La expresión entre llaves es transformada en un string y la inserta en el string.
+- Hola mundo.
+- Calculadora

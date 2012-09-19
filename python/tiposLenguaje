@@ -1,0 +1,15 @@
+2.2.1. Los tipos de Python frente a los de otros lenguajes de programación
+Un erudito lector me envió esta explicación de cómo se comparan los tipos de Python con otros lenguajes de programación:
+
+Lenguajes de tipado estático
+Un lenguaje cuyos tipos se fijan en el momento de compilar. La mayoría de los lenguajes de tipado estático fuerzan esto exigiéndole que declare todas las varibles con sus tipos antes de usarlas. Java y C son lenguajes de tipado estático.
+Lenguajes de tipado dinámico
+Un lenguaje cuyos tipos se descubren en tiempo de ejecución; es lo opuesto del tipado estático. VBScript y Python son de tipado dinámico, porque fijan el tipo que va a tener una variable cada vez que se le asigna un valor.
+Lenguajes fuertemente tipados
+Un lenguaje cuyos tipos son estrictos. Java y Python son fuertemente tipados. Si tiene un entero, no puede tratarlo como una cadena de texto sin convertirlo explícitamente.
+Lenguajes débilmente tipados
+Un lenguaje cuyos tipos pueden ser ignorados; lo opuesto a fuertemente tipados. VBScript es débilmente tipado. En VBScript puede concatenar la cadena '12' y el entero 3 para obtener la cadena '123' y entonces tratarlo como el entero 123, todo ello sin conversiones explícitas.
+De manera que Python es tanto dinámicamente tipado (porque no usa declaraciones explícitas de tipos de dato) como fuertemente tipado (porque una vez la variable adquiere un tipo, sí que importa).
+
+
+PEP Index > PEP 257 -- Docstring Conventions => http://www.python.org/dev/peps/pep-0257/

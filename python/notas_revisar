@@ -1,0 +1,34 @@
+TODO:
+
+- Vuelo de la Guadec.
+- Twits.
+- TDD en django
+- app de django del cusl
+
+Leer libro: http://www.amazon.com/Build-Awesome-Command-Line-Applications-Ruby/dp/1934356913
+
+
+Lsitado de directorios en python
+http://www.sromero.org/wiki/programacion/tutoriales/python/recorrer_arbol
+http://www.gulic.org/almacen/diveintopython-5.4-es/file_handling/os_module.html
+
+
+
+#
+git clone https://github.com/aruiz/GDN.git
+
+sudo apt-get install gobject-introspection
+ 2048  sudo apt-get install libgirepository1.0-dev 
+ 2049  sudo apt-get install libgtk-3-dev
+ 
+ python manage.py runserver
+
+
+sudo mkfs.ext2 /dev/ram0 20480 
+sudo mount /dev/ram0 /mnt/
+giscanner.ast
+
+http://developer.gnome.org/gtk-doc-manual/unstable/documenting_symbols.html.en
+
+http://developer.gnome.org/gtk3/stable/gtk3-Stock-Items.html
+
