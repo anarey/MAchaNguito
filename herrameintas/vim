@@ -1,0 +1,41 @@
+# Configuración de VIM
+
+# Fichero .vimrc
+
+filetype indent plugin on
+" set modeline
+set background=dark
+
+set expandtab        " introduce espacios al pulsar tab
+set textwidth=79    " rompe las líneas al superar los 80 caracteres
+set tabstop=4        " usa 4 espacios al presionar tab
+set softtabstop=4
+set shiftwidth=4     " numero de espacios a usar para autoindentacion
+set autoindent        " Respetar automáticamente el sangrado de la línea precedente
+set background=light  " esquema de color
+set backspace=indent,eol,start
+set ruler                 " muestra el numero de línea y columna
+syntax on               " resaltado de sintaxis
+set showcmd          " mostrar comandos parciales en la linea de comandos
+set number            " mostrar numeros de linea
+set filetype=htmldjango         " coloreado de sintaxis en las templates de django
+set hlsearch
+set title       " Muestra el path del fichero
+set pastetoggle=<F2> " Permite pegar texto previamente indentado y y no añadir mas indentacion
+
+
+" Completado de sintaxis
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS 
+
+## Pegar texto indentado: 
+Al usar 'set autoindent` y copiar un texto indentado, mete una indentación más y no se copia bien. Por ello, incluye `set pastetoggle=<F2>` en .vimrc y cuando quieras copiar un texto pulsa F2 antes de copiarlo.
+
+## TODO:
+Autocompletado de codigo python y django
+
+## URL:
+
+http://www.tatai.es/2010/11/08/mi-configuraciones-de-vim-y-ii/
