@@ -64,3 +64,34 @@ Esquema básico para el tratamientos de formularios.
 169         if user:
                 form.save()
 TODO: Añadir más ejemplos y tipos de formularios que podemos usar.
+
+## Documentación:
+
+Para generar la documentación, se necesita el paquete python-sphinx
+
+  docutils-common docutils-doc libjs-sphinxdoc libjs-underscore
+python-docutils python-jinja2 python-lxml python-pygments python-roman
+  python-sphinx sphinx-common sphinx-doc
+
+Posicionandote en el directorio:
+proyectos/docs/
+
+ make html
+
+y el html generado lo encontrarás en (o algo parecido dependiendo del proyecto)
+/docs/build/html/install.html
+
+
+## Listado de ciudades españolas (y otros elementos culturales de paises.)
+
+* A la hora de definir el modelos de datos:
+from django.contrib.localflavor.es.es_provinces import PROVINCE_CHOICES
+
+* Definimos el campo:
+provincia = models.CharField(verbose_name="Provincia", max_length=20, choices=PROVINCE_CHOICES)
+
+* Recuerda hacer un syncdb una vez definido.
+
+Más información: https://docs.djangoproject.com/en/1.4/ref/contrib/localflavor/
+
+

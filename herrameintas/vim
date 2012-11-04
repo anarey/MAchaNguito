@@ -33,6 +33,9 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 ## Pegar texto indentado: 
 Al usar 'set autoindent` y copiar un texto indentado, mete una indentación más y no se copia bien. Por ello, incluye `set pastetoggle=<F2>` en .vimrc y cuando quieras copiar un texto pulsa F2 antes de copiarlo.
 
+## Sustituir:
+:%s/hola/adios/g
+ 
 ## TODO:
 Autocompletado de codigo python y django
 
